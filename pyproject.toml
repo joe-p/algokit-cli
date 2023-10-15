@@ -23,6 +23,7 @@ mslex = "^1.1.0"
 keyring = "^24.2.0"
 pyjwt = "^2.8.0"
 auth0-python = "^4.4.0"
+nuitka = "^1.8.4"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
@@ -54,6 +55,7 @@ docs_generate = "sphinx-build -b markdown -E docs/sphinx docs/cli"
 docs_toc = "gfm-toc docs/cli/index.md -e 3"
 docs_title = {shell = "(echo \"# AlgoKit CLI Reference Documentation\\n\\n\"; cat docs/cli/index.md) > docs/cli/temp.md && mv docs/cli/temp.md docs/cli/index.md"}
 docs = ["docs_generate", "docs_toc", "docs_title"]
+compile = "python -m nuitka --include-package-data=algokit --include-distribution-metadata=algokit --standalone --remove-output --include-package=algokit --nofollow-import-to=*.tests --enable-plugin=pylint-warnings src/algokit" 
 
 [tool.ruff]
 line-length = 120
